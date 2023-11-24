@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.hdcd.mapper.CommentMapper">
+	
+	<insert id="create">
+		INSERT INTO COMMENT(
+			board_no,
+			content,
+			writer
+		) VALUES(
+			#{boardNo},
+			#{content},
+			#{writer}
+			)
+	</insert>
+	<update id="update">
+		UPDATE COMMENT 
+		   SET content =#{content}
+		 WHERE com_no = #{comNo}
+	</update>
+	<delete id="delete">
+		DELETE FROM COMMENT 
+		 WHERE com_no = #{comNo}
+	</delete>
+	<select id="select">
+		SELECT  com_no,
+				board_no,
+			    content,
+			    writer
+		  FROM COMMENT
+		 WHERE com_no = #{comNo}
+	</select>
+	<select id="list" resultType="Comment">
+	 	SELECT com_no,
+	 		   content,
+			   writer
+	 	  FROM COMMENT 
+	 	 WHERE board_no = #{boardNo}
+	 	ORDER BY com_no
+	</select>
+</mapper>

@@ -1,0 +1,147 @@
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{/layouts/board_template}">
+
+<head>
+	<title>Board</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=0">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" href="../../static/css/style.css" th:href="@{/css/style.css}"/>
+
+	<style>
+		h2 {
+			margin-top: 35px;
+			text-align: center;
+		}
+
+		.board-register:first-child {
+			margin-top: 15px;
+		}
+		.board-register input {
+			width: 600px;
+			padding: 20px 10px 10px;
+			background-color: transparent;
+			border: none;
+			border-bottom: 2px solid #111111;
+			font-size: 2rem;
+			color: #111;
+			outline: none;
+		}
+		textarea {
+			width: 600px;
+			height: 300px;
+			border: none;
+			outline: none;
+			font-size: 1.3rem;
+			border-bottom: 2px solid #111111;
+		}
+		.board-register-content {
+			margin-top: 20px;
+		}
+		.register-btn {
+			display: flex;
+			justify-content: space-between;
+			width: 600px;
+			align-items: baseline;
+		}
+		.register-btn button {
+			cursor: pointer;
+			position: relative;
+		}
+		.register-btn button:before {
+			background-color: #8b000f;
+			content: "";
+			position: absolute;
+			height: 2px;
+			width: 0;
+			bottom: -5px;
+			transition: 0.5s;
+			left: 50%;
+			transform: translateX(-50%);
+		}
+		.register-btn button:hover:before {
+			width: 100%;
+		}
+		@media screen and (max-width: 480px) {
+			.register-btn {
+				width: 340px;
+			}
+			.board-register input {
+				width: 350px;
+			}
+			textarea {
+				width: 350px;
+				height: 300px;
+			}
+		}
+
+	</style>
+</head>
+<body>
+<div layout:fragment="content">
+
+	<div class="register-btn">
+		<button type="submit" id="btnRegister" th:text="#{action.register.board}">등록</button>
+
+		<div class="writertxt">
+	<h2 th:text="#{board.header.register}">회원게시판 등록</h2>
+		</div>
+		<button type="submit" id="btnList" th:text="#{action.list}">목록</button>
+	</div>
+	
+	<form id="board" action="list.html" th:action="@{/board/register}" th:object="${board}" method="POST">
+		<div class="register-form">
+			<div class="board-register">
+				<input type="text" name="title" th:field="*{title}" placeholder="TITLE" />
+				<span class="error_message" th:if="${#fields.hasErrors('title')}" th:errors="*{title}">title의 에러 메시지</span>
+			</div>
+
+			<div class="board-register">
+				<input type="text" name="writer" th:field="*{writer}" placeholder="WRITER" />
+				<span class="error_message" th:if="${#fields.hasErrors('writer')}" th:errors="*{writer}">writer의 에러 메시지</span>
+			</div>
+<!--			<tr>-->
+<!--				<td th:text="#{item.itemFile}">상품파일</td>-->
+<!--				<td><input type="file" name="picture" /></td>-->
+<!--				<td></td>-->
+<!--			</tr>-->
+<!--			<tr>-->
+<!--				<td th:text="#{item.itemPreviewFile}">미리보기파일</td>-->
+<!--				<td><input type="file" name="preview" /></td>-->
+<!--				<td></td>-->
+<!--			</tr>-->
+
+			<div class="board-register-content">
+				<textarea name="content" th:field="*{content}" placeholder="CONTENT" ></textarea>
+				<span class="error_message" th:if="${#fields.hasErrors('content')}" th:errors="*{content}">content의 에러 메시지</span>
+			</div>
+		</div>
+
+	</form>
+
+	
+	<script>
+		$(document).ready(function() {
+	
+			var formObj = $("#board");
+			// var formObj = $("#item");
+			//
+			// $("#btnModify").on("click", function() {
+			// 	formObj.submit();
+			// });
+	
+			$("#btnRegister").on("click", function() {
+				formObj.submit();
+			});
+	
+			$("#btnList").on("click", function() {
+				self.location = "list";
+			});
+	
+		});
+
+
+	</script>
+</div>
+</body>
+</html>

@@ -1,0 +1,153 @@
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layouts/header_template">
+	
+<head>
+	<title>User</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" href="../../static/css/style.css" th:href="@{/css/style.css}"/>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+		a {
+			text-decoration: none;
+			color: #111111;
+		}
+		.joinform {
+			margin-top: 55px;
+		}
+		#member {
+			position: relative;
+			/*z-index: 2;*/
+			width: 500px;
+		}
+		h1 {
+			font-size: 42px;
+			text-align: center;
+			margin-bottom: 35px;
+			font-family: 'DM Serif Display', serif; !important;
+		}
+		.int-area {
+			width: 400px;
+			position: relative;
+			margin-top: 20px;
+		}
+		.int-area:first-child {
+			margin-top: 20px;
+		}
+		.int-area input {
+			width: 100%;
+			padding: 20px 10px 10px;
+			background-color: transparent;
+			border: none;
+			border-bottom: 1px solid #999;
+			font-size: 18px;
+			color: #111;
+			outline: none;
+		}
+		.int-area label {
+			position: absolute;
+			left: 10px;
+			top: 15px;
+			font-size: 18px;
+			color: #999;
+			transition: all 0.5s ease;
+		}
+		.int-area input:focus + label,
+		.int-area input:valid + label {
+			top: -2px;
+			font-size: 13px;
+			color: #69221b;
+		}
+		.btn-area {
+			margin-top: 30px;
+			display: flex;
+			justify-content: center;
+		}
+		.btn-area button {
+			width: 300px;
+			height: 50px;
+			background: transparent;
+
+			color: #69221b;
+			font-size: 20px;
+			border: 1px solid #69221b;
+			border-radius: 25px;
+			cursor: pointer;
+		}
+		.btn-area button:hover {
+			border: 1px solid #111;
+			color: #111;
+		}
+		.age {
+			margin-top: 20px;
+		}
+		@media screen and (max-width: 768px) {
+			.int-area {
+				width: 260px;
+			}
+			#member {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				width: 100%;
+			}
+		}
+	</style>
+</head>
+<body>
+<div layout:fragment="content">
+
+	<div class="joinform">
+	<h2 th:text="#{user.header.register}">회원 등록</h2>
+
+	<form id="member" action="list.html" th:action="@{/user/register}" th:object="${member}" method="POST">
+
+		<div class="int-area">
+			<input type="email" name="userId" th:field="*{userId}" id="id" autocomplete="off" required>
+			<label for="id">user id</label>
+			<span class="error_message" th:if="${#fields.hasErrors('userId')}" th:errors="*{userId}">userId의 에러 메시지</span>
+		</div>
+		<div class="int-area">
+			<input type="password" name="userPw" th:field="*{userPw}" id="pw" autocomplete="off" required>
+			<label for="pw">password</label>
+			<span class="error_message" th:if="${#fields.hasErrors('userPw')}" th:errors="*{userPw}">userPw의 에러 메시지</span>
+		</div>
+		<div class="int-area">
+			<input type="text" name="userName" th:field="*{userName}" id="card" autocomplete="off" required>
+			<label for="card">닉네임</label>
+			<span class="error_message" th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}">userName의 에러 메시지</span>
+		</div>
+		<div class="age">
+			<label for="">연령대</label>
+			<select th:field="*{job}">
+				<option th:each="item : ${jobList}" th:value="${item.value}" th:text="${item.label}"></option>
+			</select>
+			<span class="error_message" th:if="${#fields.hasErrors('job')}" th:errors="*{job}">job의 에러 메시지</span>
+		</div>
+
+
+	</form>
+	<div class="btn-area">
+		<button type="submit" id="btnRegister" th:text="#{action.register}">등록</button>
+	</div>
+
+	</div>
+	<script th:inline="javascript">
+		$(document).ready(function() {
+
+			var formObj = $("#member");
+
+			$("#btnRegister").on("click", function() {
+				formObj.submit();
+			});
+
+		});
+	</script>
+</div>
+</body>
+</html>

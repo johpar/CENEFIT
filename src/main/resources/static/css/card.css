@@ -1,0 +1,202 @@
+* {margin: 0; padding: 0;}
+:root {--minRangeValue: 380px;}
+ul,li {list-style: none; }
+a{ text-decoration: none;font-size: 0.8rem; font-weight: bold;}
+img {
+    margin-right: 15px;
+    max-width: 80px;
+    max-height: 80px;
+}
+body {
+    background-color: #111;
+    font-family: 'IBM Plex Sans KR', sans-serif;}
+a,span,h2,h3,h6,div {color: #fff;}
+.chart-header { text-align: center;}
+.chart-header h3 {margin-top: 30px;}
+.card-img {
+    display: flex;
+    position: absolute;
+    margin-left: 31px;
+    margin-top: 8px;}
+.cardform {
+    display: grid;
+    grid-gap: 1rem;
+    /* grid-template-columns: repeat(auto-fit, minmax(var(--minRangeValue), 1fr)); */
+    grid-template-columns: repeat(3, 1fr);
+    margin-left: 2rem;
+}
+.cardform li{
+    border-bottom: 1px solid #5b5b54;
+    border-right: 1px solid #5b5b54;
+    border-radius: 10px;
+    width: 365px;
+    height: 100px;
+    padding: 10px 0;
+    margin-top: 10px;
+    box-shadow: 10px 10px 15px #05161d;
+}
+.cardform li:hover {
+    border-bottom: 3px solid #d7aa6d;
+    border-right: 1.5px solid #d7aa6d;
+    border-top: 0.5px solid #d7aa6d;
+    border-left: 1px solid #d7aa6d;
+    border-radius: 10px;
+    box-shadow: 20px 20px 20px #1c282e;
+}
+.cardform ul {
+    margin-top: 40px;
+}
+.cardform a,h4,h5,h6 {
+    display: flex;
+    justify-content: center;
+    margin-top: 9px;
+    margin-left: 75px;
+
+}
+.cardform span {
+    display: flex;
+    justify-content: center;
+    padding: 10px 5px;
+}
+.cardform h2 {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+h2 {margin-top: 20px; margin-bottom: 15px;}
+.cardcompany{
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-gap: 10px;
+    /* grid-auto-rows: minmax(5px, auto); */
+    /* height: 60px; */
+    /* width: 490px; */
+}
+.cardcompany div {
+    border: 1px solid #fff;
+    border-radius: 40px;
+    padding: 27px 15px;
+    box-shadow: 5px 5px 20px #1c282e;
+}
+#kb:hover {border-color: #fae500; color:#fae500;}
+#wo:hover {border-color: #04addc;}
+#nh:hover {border-color: #ffb700;}
+#sh:hover {border-color: #0465dc;}
+#hn:hover {border-color: #049a90;}
+#ib:hover {border-color: #0416a2;}
+#ss:hover {border-color: #de6ae9;}
+#hd:hover {border-color: #98a0a5;}
+#l:hover {border-color: #ed0100;}
+#ct:hover {border-color: #2c93b3;}
+
+
+.grid {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-top: 30px;
+}
+.chart-logo {
+    display: flex;
+    justify-content: start;
+
+}
+.chart-logo p {
+    font-family: 'Mukta Vaani', sans-serif;
+    font-size: 5rem;
+    text-align: right;
+    text-shadow: 6px 4px 5px #273f4b;
+    letter-spacing: 1px;
+}
+/*top button*/
+#backtotop {
+    position: fixed;
+    bottom: 0;
+    right: 3rem;
+    background-color: #111;
+    color: #fff;
+    border: 1px solid #5b5b54;
+    border-radius: 5px;
+    padding: 1em;
+    text-decoration: uppercase;
+    cursor: pointer;
+    font-weight: 700;
+    box-shadow: 1px 1px 20px rgb(100, 114, 4);
+    transition: all 0.3s ease-in-out;
+    display: inline-block;
+    opacity: 0;
+    text-decoration: none;
+    font-size: 1em;
+    padding: 1rem 2rem;
+}
+#backtotop:hover {
+    /* background-color: #fff; */
+    color: #fff;
+    padding: 2em 2em;
+    border: 2px solid #d7aa6d;
+}
+#backtotop.visible {
+    opacity: 1;
+}
+.drop-card {display: none}
+@media screen and (max-width: 768px) {
+    .cardform {
+        display: grid;
+
+        grid-template-columns: repeat(2, 1fr);
+        margin-left: 0;
+    }
+
+    .cardcompany div {
+        padding: 23px 9px;
+    }
+}
+
+    @media screen and (max-width: 480px) {
+        .cardform {
+            display: grid;
+            grid-template-columns: 1fr;
+            margin-left: 0;
+        }
+        .cardform ul {
+            margin-top: 0
+        }
+        .chart-header h2 {
+            margin-bottom: 0
+        }
+        .chart-logo {
+            display: flex;
+            justify-content: center;
+        }
+        .chart-logo p {
+            font-size: 3rem;
+        }
+        .drop-card {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+        .cardlist h2 {
+            margin-bottom: 0
+        }
+
+        .mq-block {
+            display: none;
+        }
+
+        .show {
+            display: block;
+        }
+        .cardcompany {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            margin-top: 0;
+        }
+        .cardcompany div {
+            border: 1px solid #fff;
+            border-radius: 0;
+            padding: 10px 10px;
+        }
+
+    }
+

@@ -1,0 +1,199 @@
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{/layouts/board_template}">
+
+<head>
+	<title>Board</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../../static/css/style.css" th:href="@{/css/style.css}"/>
+	<style>
+		.board-register:first-child {
+			margin-top: 15px;
+		}
+		.board-register input {
+			width: 600px;
+			padding: 20px 10px 10px;
+			background-color: transparent;
+			border: none;
+			border-bottom: 2px solid #111111;
+			font-size: 2rem;
+			color: #111;
+			outline: none;
+		}
+		textarea {
+			width: 600px;
+			height: 300px;
+			border: none;
+			outline: none;
+			font-size: 1.3rem;
+			border-bottom: 2px solid #111111;
+		}
+		.board-register-content {
+			margin-top: 20px;
+		}
+		.read-btn {
+			margin-top: 35px;
+			width: 600px;
+			display: flex;
+			justify-content: space-between;
+		}
+		.read-btn button {
+			cursor: pointer;
+			position: relative;
+		}
+		.read-btn button:before {
+			background-color: #8b000f;
+			content: "";
+			position: absolute;
+			height: 2px;
+			width: 0;
+			bottom: -5px;
+			transition: 0.5s;
+			left: 50%;
+			transform: translateX(-50%);
+		}
+		.read-btn button:hover:before {
+			width: 100%;
+		}
+		@media screen and (max-width: 480px) {
+			.read-btn {
+				width: 340px;
+			}
+			.board-register input {
+				width: 350px;
+			}
+			textarea {
+				width: 350px;
+				height: 300px;
+			}
+		}
+	</style>
+</head>
+<body>
+<div layout:fragment="content">
+<!--	<h2 th:text="#{board.header.read}">회원게시판 상세보기</h2>-->
+	<div class="read-btn">
+		<button type="submit" id="btnEdit" th:text="#{action.edit}">편집</button>
+		<button type="submit" id="btnRemove" th:text="#{action.remove}">삭제</button>
+		<button type="submit" id="btnList" th:text="#{action.list}">목록</button>
+	</div>
+	
+	<form id="board" action="list.html" th:action="@{/board/remove}" th:object="${board}" method="POST">
+		<input type="hidden" name="boardNo" th:field="*{boardNo}" />
+
+			<div class="register-form">
+				<div class="board-register">
+				<input type="text" name="title" th:field="*{title}" readonly="readonly" />
+				</div>
+
+				<div class="board-register">
+				<input type="text" name="writer" th:field="*{writer}" readonly="readonly" />
+				</div>
+<!--				<tr>-->
+<!--					<td th:text="#{item.preview}">미리보기</td>-->
+<!--					<td><img src="display?itemId=${item.itemId}" th:src="|display?itemId=${item.itemId}|" width="210"></td>-->
+<!--				</tr>-->
+				<div class="board-register-content">
+				<textarea name="content" th:field="*{content}" readonly="readonly"></textarea>
+				</div>
+			</div>
+	</form>
+	
+	<!-- 댓글 구현 -->
+	
+	<div class="container">
+        <label for="content">comment</label>
+        <form name="commentRegisterForm">
+               <input type="hidden" id="boardNo" th:field="${board.boardNo}"/>
+               <input type="text" id="writer" name="writer" placeholder="작성자를 입력해주세요."/>
+               <input type="text" id="content" name="content" placeholder="내용을 입력하세요."/>
+               <button type="submit" id="btnCommentInsert" th:text="#{comment1}">목록</button>
+        </form>
+        <!-- 댓글 list 받을곳 -->
+        <table id="commentTable">
+        	
+        </table>
+    </div>
+    
+	<script>
+		$(document).ready(function() {
+			commentList();
+			var formObj = $("#board");
+	
+			$("#btnEdit").on("click", function() {
+				var boardNo = $("#boardNo");
+				var boardNoVal = boardNo.val();
+				
+				self.location = "/board/modify?boardNo=" + boardNoVal;
+			});
+	
+			$("#btnRemove").on("click", function() {
+				formObj.attr("action", "/board/remove");
+				formObj.submit();
+			});
+	
+			$("#btnList").on("click", function() {
+				self.location = "/board/list";
+			});
+			
+			/* 댓글 자바스크립트 */
+			/* 댓글등록버튼 */
+			$("#btnCommentInsert").on("click",function(){ //댓글 등록 버튼 클릭시
+				console.log("버튼눌림");
+			    var boardNo = $("#boardNo");
+			    var writer = $("#writer");
+			    var content = $("#content");
+			    commentRegister(boardNo, writer, content); //Insert 함수호출(아래)
+			});
+			/* 댓글등록 */
+			function commentRegister(boardNo, writer, content){
+			    $.ajax({
+			        url : '/comment/comWrite',
+			        type : 'post',
+			        dataType : "json",
+			        data : {
+			        	"boardNo":boardNo,
+			        	"writer":writer,
+			        	"content":content
+			        },
+			        success : function(data){
+			        	commentList(); //댓글 작성 후 댓글 목록 reload
+		                /* $('[name=content]').val(''); */
+			        }
+			    });
+			}
+
+			/* 댓글리스트 */
+			function commentList(){
+				var boardNo = $("#boardNo");
+				var boardNoVal = boardNo.val();
+			    $.ajax({
+			        url : '/comment/comList',
+			        type : 'post',
+			        dataType : "json",
+			        data : {'boardNo':boardNoVal},
+			        success : function(list){
+			        	$('#commentTable').empty();
+			            var a =''; 
+			            $.each(list, function(index, list){ 
+			                a += '<tr style="border-bottom:1px solid darkgray; margin-bottom: 15px;">';
+			               	a += '<td>'+list.content+'</td>';
+			               	a += '<td>'+list.writer+'</td>';
+			                a += '</tr>';
+			                $('#commentTable').append(a);
+			            });
+			        }, 
+			        error: function(error){
+			        	alert(error);
+			        }
+			    });
+			}
+			
+		});
+		
+		
+	</script>
+</div>
+</body>
+</html>

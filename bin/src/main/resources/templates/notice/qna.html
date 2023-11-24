@@ -1,0 +1,79 @@
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layouts/board_template">
+
+<head>
+    <title>Notice</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../../static/css/style.css" th:href="@{/css/style.css}"/>
+    <style>
+        h2{
+            display: flex;
+            justify-content: start;
+        }
+        .customerlogo {
+            margin-left: 50px;
+            margin-top: 25px;
+            display: flex;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .section {
+            float: left;
+            margin-left: 50px;
+            margin-top: 15px;
+            text-align: left;
+
+        }
+        .section ul li a {
+            margin-top: 30px;
+            color: #5a5a5a;
+            font-size: 1rem;
+
+        }
+        .section2 {margin-top: 30px;}
+        h5 {margin-top: 8px;}
+    </style>
+</head>
+<body>
+<div layout:fragment="content">
+
+    <a class="customerlogo" href="" th:text="#{notice.header.list}">고객센터</a>
+    <div class="section">
+        <ul>
+            <li><a href="" class="faqtop">FaQ Top 10</a></li>
+            <li><a href="qna.html" th:href="@{/notice/qna}" >QnA List</a></li>
+            <li><a href="register.html" th:href="@{/notice/register}" th:text="#{action.new}">질문하기</a></li>
+        </ul>
+        <div class="section2">
+            <h3>070-1924-4366</h3>
+            <h5>AM 09:00 - PM 16:30</h5>
+            <h5>(점심시간 12:50 - 13:40)<br>
+                DAY OFF (토/일/공휴일 휴무)</h5>
+        </div>
+    </div>
+<table>
+    <tr th:if="${#lists.isEmpty(list)}">
+        			<td colspan="3" th:text="#{common.listEmpty}">
+        				List is empty.
+        			</td>
+        		</tr>
+
+        		<tr th:each="notice : ${list}">
+        			<td align="center" th:text="${notice.noticeNo}">${notice.noticeNo}</td>
+        			<td align="left"><a href="read.html" th:href="|/notice/read?noticeNo=${notice.noticeNo}|" th:text="${notice.title}">${notice.title}</a></td>
+        			<td align="center" th:text="${#temporals.format(notice.regDate, 'yyyy-MM-dd HH:mm')}"></td>
+        		</tr>
+</table>
+
+    <script>
+        var result = [[${msg}]];
+
+        if (result === "SUCCESS") {
+            alert([[#{common.processSuccess}]]);
+        }
+    </script>
+</div>
+</body>
+</html>

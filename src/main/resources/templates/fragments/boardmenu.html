@@ -1,0 +1,32 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+<div th:fragment="boardmenu">
+
+<div class="menu">
+    <ul class="boardmenu">
+        <li><a href="/">home</a></li>
+        <li><a href="/pds/list" th:text="#{header.chart}"></a></li>
+        <li><a href="/pds/card" th:text="#{header.card}"></a></li>
+        <li><a href="/board/list" th:text="#{header.board}">게시판</a></li>
+        <li><a href="/item/faq"th:text="#{header.customercenter}">center</a></li>
+<!--        <ul class="lojo-mq">-->
+<!--        <li><a href="/user/register" th:text="#{header.joinMember}"><span>join</span></a></li>-->
+<!--        <li><a href="/auth/login" th:text="#{header.login}"><span>login</span></a></li>-->
+<!--        </ul>-->
+
+    </ul>
+</div>
+    <script>
+        const toggleBtn = document.querySelector("#nav-mqBtn");
+        const menu = document.querySelector(".boardmenu");
+
+        toggleBtn.addEventListener("click", () => {
+            menu.classList.toggle("active");
+        });
+    </script>
+
+</div>
+
+</body>
+</html>

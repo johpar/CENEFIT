@@ -1,0 +1,28 @@
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+    <title>Common</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=0">
+    <link rel="stylesheet" href="../../static/css/boardheader.css" th:href="@{/css/boardheader.css}"/>
+<!--    <link rel="stylesheet" href="../../static/css/boardmenu.css" th:href="@{/css/boardmenu.css}"/>-->
+    <script src="https://kit.fontawesome.com/5d13eb1686.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@1&family=Hina+Mincho&display=swap" rel="stylesheet">
+    <script src="/js/jQuery-2.1.4.min.js"></script>
+</head>
+
+<body>
+
+<div th:replace="~{fragments/boardheader::boardheader}"></div>
+<!--<div th:replace="~{fragments/boardmenu::boardmenu}"></div>-->
+
+
+
+
+<div align="center" layout:fragment="content"></div>
+
+</body>
+</html>

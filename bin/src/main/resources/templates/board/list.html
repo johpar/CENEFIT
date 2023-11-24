@@ -1,0 +1,297 @@
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{/layouts/board_template}">
+
+<head>
+	<title>Board</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" href="../../static/css/style.css" th:href="@{/css/style.css}"/>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+	<style>
+
+		.tag-center {
+			display: flex;
+			justify-content: center;
+		}
+		.tag {
+			align-items: center;
+			z-index: 1;
+		}
+		.tag ul {
+			display: flex;
+			justify-content: center;
+		}
+		.tag li {
+			font-size: 1rem;
+			border: 1px solid #111;
+			border-radius: 2rem;
+			padding: 0 8px;
+			margin: 2px 5px;
+			text-align: center;
+		}
+		.tag li:hover {
+			background: #111;
+			color: #fff;
+		}
+		.tag a:hover {
+			color: #fff;
+		}
+		.panel-body {
+			padding: 10px;
+			display: none;
+		}
+		.active .panel-body {
+			display: block;
+		}
+		#btn-none {
+			cursor: pointer;
+		}
+		#btn-none i {
+			font-size: 1rem;
+		}
+		#btn-collapse {
+			margin-bottom: 5px;
+			background-color: #5a7467;
+			border: none;
+			color: #fff;
+			cursor: pointer;
+			padding: 5px;
+			float: left;
+		}
+		#btn-collapse span {
+			writing-mode: vertical-rl;
+			text-orientation: mixed;
+		}
+		#left {
+			border-bottom: 1px solid #999999;
+		}
+		tr:nth-child(odd) td{
+			/*border-bottom: 1px solid #5a5a5a;*/
+			background: rgba(253, 229, 229, 0.34);
+		}
+		td {
+			font-size: 1rem;
+		}
+		.board-logo {
+			margin: 30px 0;
+			display: flex;
+			justify-content: space-around;
+			align-items: baseline;
+			font-family: 'Roboto', sans-serif; !important;
+		}
+		.board-logo span {
+			font-size: 2rem;
+			font-weight: bold;
+			position: relative;
+		}
+		.board-logo span:after {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			display: inline-block;
+			width: 100%;
+			height: 14px;
+			background: #5a7467;
+			content: "";
+			z-index: -1;
+		}
+		.board-logo a {
+			font-size: 0.9rem;
+		}
+		#pgrq {
+			margin-top: 20px;
+		}
+		#pgrq input,
+		button {
+			border: none;
+			outline: none;
+			background: none;
+		}
+		#pgrq input {
+			border-bottom: 1px solid #111;
+			width: 160px;
+		}
+		#pgrq i {
+			font-size: 1rem;
+			margin-right:10px;
+		}
+		#pgrq select {
+			width: 190px;
+		}
+		.pagination-form a {
+			display: inline-flex;
+			justify-content: center;
+			margin: 10px 8px;
+		}
+		table {
+			min-height: 300px;
+		}
+		@media screen and (max-width: 480px) {
+			#btn-collapse {
+				padding: 15px;
+				margin-bottom: 2px;
+			}
+			.active .panel-body {
+				display: none;
+			}
+		}
+
+	</style>
+</head>
+<body>
+<div layout:fragment="content">
+<!--	<h2 th:text="#{board.header.list}">회원게시판 목록</h2>-->
+
+
+	<aside id="left">
+		<button id="btn-collapse" onclick="div_hide();"><span>Collapse All</span></button>
+		<button id="btn-none"  onclick="div_show();">
+<!--			<a href="">-->
+			<i class="fas fa-caret-down"></i>
+<!--			</a>-->
+		</button>
+		<div class="tag-center active">
+			<div class="tag panel-body" id="thisone">
+				<ul>
+					<li><a href="">#카드혜택</a></li>
+					<li><a href="">#주유소</a></li>
+					<li><a href="">#체크카드</a></li>
+					<li><a href="">#신용카드_페이백</a></li>
+					<li><a href="">#영화_할인</a></li>
+
+				</ul>
+				<ul>
+					<li><a href="">#통신사_할인</a></li>
+					<li><a href="">#공과금</a></li>
+					<li><a href="">#온라인_쇼핑몰</a></li>
+					<li><a href="">#청구할인</a></li>
+					<li><a href="">#스타벅스_할인</a></li>
+					<li><a href="">#병원</a></li>
+					<li><a href="">#약국_추가할인</a></li>
+				</ul>
+				<ul>
+					<li><a href="http://localhost:8091/board/list?searchType=tcw&keyword=%EB%8F%99%EB%AC%BC%EB%B3%91%EC%9B%90">#동물병원_포인트</a></li>
+					<li><a href="">#간편결제</a></li>
+					<li><a href="">#해외가맹점</a></li>
+					<li><a href="">#보험료_할인</a></li>
+				</ul>
+			</div>
+		</div>
+	</aside>
+
+	<div class="board-logo">
+	<span>Community</span>
+	<a href="register.html" th:href="@{/board/register}" th:text="#{action.new}">글쓰기</a>
+	</div>
+
+	<table>
+		<tr>
+			<th align="center" width="80"></th>
+			<th align="center" width="500"></th>
+			<th align="center" width="170"></th>
+			<th align="center" width="180"></th>
+<!--			<th align="center" width="80" th:text="#{board.no}">번호</th>-->
+<!--			<th align="center" width="320" th:text="#{board.title}">제목</th>-->
+<!--			<th align="center" width="100" th:text="#{board.writer}">작성자</th>-->
+<!--			<th align="center" width="180" th:text="#{board.regdate}">등록일시</th>-->
+		</tr>
+		<div class="boardlist">
+		<tr th:if="${#lists.isEmpty(list)}">
+			<td colspan="4" th:text="#{common.listEmpty}">
+				List is empty.
+			</td>
+		</tr>
+		</div>
+
+		<tr th:each="board : ${list}">
+			<td align="center" th:text="${board.boardNo}">${board.boardNo}</td>
+			<td align="left"><a href="read.html"
+								th:href="@{|/board/read${pgrq.toUriString(pgrq.page)}&boardNo=${board.boardNo}|}"
+								th:text="${board.title}">${board.title}</a></td>
+
+			<td align="center" th:text="${board.writer}">${board.writer}</td>
+			<td align="center" th:text="${#temporals.format(board.regDate, 'yyyy-MM-dd')}"></td>
+		</tr>
+
+	</table>
+	<!-- 검색폼  -->
+	<form id="pgrq" action="list.html" th:action="@{|/board/list${pgrq.toUriStringByPage(1)}|}" th:object="${pgrq}" method="GET">
+		<select th:field="*{searchType}">
+			<option th:each="element : ${searchTypeCodeValueList}" th:value="${element.value}" th:text="${element.label}">제목</option>
+		</select>
+
+		<input type="text" name="keyword" th:field="*{keyword}" />
+		<button id="searchBtn">
+			<i class="fas fa-search"></i></button>
+	</form>
+	<!-- 페이징 네비게이션  -->
+	<div class="pagination-form">
+		<th:block>
+			<a href="list.html" th:href="@{?page={page} (page =${pagination.startPage})}">
+				<span>&laquo;</span></a>
+		</th:block>
+		<th:block th:if="${pagination.prev}">
+			<a href="list.html" th:href="@{?page={page} (page =${pagination.startPage - 1})}"> <</a>
+		</th:block>
+
+		<th:block  class="idx active"th:each="idx: ${#numbers.sequence(pagination.startPage, pagination.endPage)}" >
+			<a href="list.html" th:href="@{|/board/list${pagination.makeQuery(idx)}|}" th:text="${idx}">${idx}</a>
+		</th:block>
+
+		<th:block th:if="${pagination.next && pagination.endPage > 0}">
+			<a href="list.html" th:href="@{?page={page} (page =${pagination.endPage +1})}">> </a>
+		</th:block>
+		<th:block >
+			<a href="list.html" th:href="@{?page={page} (page =${pagination.endPage})}">
+				<span>&raquo;</span>
+			</a>
+		</th:block>
+	</div>
+
+
+
+	<script th:inline="javascript">
+
+
+		var result = [[${msg}]];
+		
+		if (result === "SUCCESS") {
+			alert([[#{common.processSuccess}]]);
+		}
+		// var panelQuestion = document.querySelectorAll(".tag-center");
+		// var collapseBtn = document.querySelector("#btn-collapse");
+		//
+		// for (var i = 0; i < panelQuestion.length; i++) {
+		// 	panelQuestion[i].addEventListener("click", function () {
+		// 		closeAll();
+		// 		this.classList.add("active");
+		// 	});
+		// }
+		// collapseBtn.addEventListener("click", function () {
+		// 	closeAll();
+		// });
+		//
+		// function closeAll() {
+		// 	for (var x = 0; x < panelQuestion.length; x++) {
+		// 		panelQuestion[x].classList.remove("active");
+		// 	}
+		// }
+
+		function div_show() {
+			document.querySelector(".tag").style.display = "block";
+		}
+		function div_hide() {
+			document.querySelector(".tag").style.display = "none";
+		}
+
+
+
+
+
+
+	</script>
+</div>
+</body>
+</html>

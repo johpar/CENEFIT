@@ -1,0 +1,161 @@
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{/layouts/main_template}">
+  
+<head>
+	<title>Home</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" href="../../static/css/style.css" th:href="@{/css/style.css}"/>
+	<link rel="stylesheet" href="../../static/css/mainslide.css" th:href="@{/css/mainslide.css}"/>
+	<script src="https://kit.fontawesome.com/5d13eb1686.js" crossorigin="anonymous"></script>
+	<style>
+		#search {
+			z-index: 9;
+			position: relative;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			margin-top: 450px;
+		}
+		#search input,
+		button {
+			border: none;
+			outline: none;
+			background: none;
+		}
+		#search input {
+			border-bottom: 1px solid #111;
+			width: 300px;
+			height: 40px;
+			display: block; !important;
+			font-size: 2rem;
+		}
+		#search i {
+			font-size: 1rem;
+			margin-right:20px;
+		}
+		@media screen and (max-width: 768px) {
+			.slide img  {
+				display: none;
+			}
+			.logo-left {
+				display: none;
+			}
+			.center-logo a {
+				margin-left: 10px;
+			}
+		}
+
+
+	</style>
+</head>
+<body>
+<div layout:fragment="content">
+	<form id="search" action="">
+		<input type="text" name="searchInput"/>
+		<button class="iconBtn" type="submit" name="searchClick">
+			<i class="fas fa-search"></i></button>
+	</form>
+
+	<div class="slider" id="slider">
+		<div class="slide" id="slide-1">
+			<div class="slide-content">
+				<h1 th:text="#{home1.1}">현대카드 M BOOST</h1>
+				<h2 th:text="#{home1.2}">M 위에 적립을 BOOST</h2>
+				<a href="#" th:text="#{home1.3}">혜택보기</a>
+			</div>
+			<img id="img1" src="https://www.hyundaicard.com/img/com/card/card_M3PBT_GI_f.png" alt="">
+			<img id="img2" src="https://www.hyundaicard.com/img/com/card/card_M3PBT_GK_f.png" alt="">
+		</div>
+		<div class="slide" id="slide-2">
+			<div class="slide-content">
+				<h1 th:text="#{home2.1}">삼성카드 6 V4</h1>
+				<h2 th:text="#{home2.2}">온라인 신규회원 연회비 100% 캐시백</h2>
+				<a href="#" th:text="#{home2.3}">혜택보기</a>
+			</div>
+			<img id="img5" src="https://static11.samsungcard.com/wcms/scard/personal/__icsFiles/afieldfile/2021/06/10/AAP1712_anmd_290h.png" alt="">
+			<img id="img4" src="https://static11.samsungcard.com/wcms/scard/personal/__icsFiles/afieldfile/2021/07/20/AAP1717_cs_cpc.png" alt="">
+			<img id="img3" src="https://static11.samsungcard.com/wcms/scard/personal/__icsFiles/afieldfile/2021/06/09/AAP1550_r_P.png" alt="">
+
+
+		</div>
+		<div class="slide" id="slide-3">
+			<div class="slide-content">
+				<h1 th:text="#{home3.1}">MULTI On.Livign</h1>
+				<h2 th:text="#{home3.2}">오늘 하루! 7만원 캐시백 지급 이벤트</h2>
+				<a href="#" th:text="#{home3.3}">혜택받기</a>
+			</div>
+			<img id="hn-img" src="https://m.hanacard.co.kr/ATTACH/NEW_MOBILE/images/cardinfo/card_img/13278.png" alt="">
+			<img id="hn-img2" src="https://m.hanacard.co.kr/ATTACH/NEW_HOMEPAGE/images/cardinfo/card_img/13065.png" alt="">
+			<img id="hn-img3" src="https://api6.card-gorilla.com:8080/storage/card/734/card_img/14650/MULTI_Global.png" alt="">
+			<img id="hn-img4" src="https://api6.card-gorilla.com:8080/storage/card/710/card_img/14606/MULTI_On.png" alt="">
+			<img id="hn-img5" src="https://api6.card-gorilla.com:8080/storage/card/714/card_img/14604/MULTI_Oil.png" alt="">
+<!--			<img id="hn-img6" src="https://api6.card-gorilla.com:8080/storage/card/587/card_img/7155/%EB%AA%A8%EB%91%90%EC%9D%98%EC%87%BC%ED%95%91_L.png" alt="">-->
+
+		</div>
+		<div class="slide" id="slide-4">
+			<div class="slide-content">
+				<h1 th:text="#{home4.1}">신한카드 Mr.Life</h1>
+				<h2 th:text="#{home4.2}">통신+공과금혜택 TOP 1</h2>
+				<a href="#" th:text="#{home4.3}">혜택보기</a>
+			</div>
+			<img id="sh-img" src="https://www.shinhancard.com/pconts/images/contents/card/plate/cdCreditAXGC75_VISAs.gif" alt="">
+		</div>
+	</div>
+
+
+
+
+	<script  th:inline="javascript">
+		initSlider();
+
+		function initSlider() {
+			const sliderContainer = document.getElementById("slider");
+			const paginationContainer = document.createElement("div");
+
+			/*페이지네이션 생성*/
+			paginationContainer.className = "pagination";
+			sliderContainer.prepend(paginationContainer);
+
+			//슬라이드 개수 파악
+			const slideCount = document.querySelectorAll(".slide").length;
+
+			for (let i = slideCount; i > 0; i--) {
+				let radioBtn = document.createElement("input");
+				radioBtn.type = "radio";
+				radioBtn.name = "slide-radios";
+				radioBtn.className = "slide-radio";
+				radioBtn.id = `slide-radio-${i}`;
+
+				if (i == 1) radioBtn.checked = true;
+				sliderContainer.prepend(radioBtn);
+
+				//label생성
+				let label = document.createElement("label");
+				label.setAttribute("for", `slide-radio-${i}`);
+				// label.innerHTML = i;
+				paginationContainer.prepend(label);
+			}
+
+			//자동 슬라이드
+			let autoRun = setInterval(changeSlide, 3000);
+
+			function changeSlide() {
+				const radioButtons = [...document.querySelectorAll(".slide-radio")];
+				console.log(changeSlide);
+				const currentIndex = radioButtons.findIndex((rb) => rb.checked);
+				radioButtons[(currentIndex + 1) % radioButtons.length].checked = true;
+			}
+			paginationContainer.addEventListener("mouseenter", () =>
+					clearInterval(autoRun)
+			);
+			paginationContainer.addEventListener(
+					"mouseleave",
+					() => (autoRun = setInterval(changeSlide, 3000))
+			);
+		}
+
+	</script>
+</div>
+</body>
+</html>

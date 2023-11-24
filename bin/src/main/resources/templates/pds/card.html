@@ -1,0 +1,342 @@
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layouts/black_template">
+
+<head>
+    <title>Pds</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../../static/css/style.css" th:href="@{/css/style.css}"/>
+    <link rel="stylesheet" href="../../static/css/card.css" th:href="@{/css/card.css}"/>
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@300&display=swap" rel="stylesheet">
+<!--    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@1&family=Hina+Mincho&display=swap" rel="stylesheet">-->
+</head>
+<body>
+<div layout:fragment="content">
+
+    <div class="chart-logo">
+        <a href="../home.html" th:href="@{/}"><p>CARD BENEFIT</p></a>
+    </div>
+    <div class="chart-header">
+        <h2>카드사별 카드찾기
+        <button class="drop-card" ><i style=" color: #fff; font-size: 1rem" class="fas fa-caret-down"></i></button>
+        </h2>
+    </div>
+    <div class="mq-block">
+    <div class="grid">
+        <div class="cardcompany">
+            <div class="item" id="kb"><a href="#kb-card">국민카드</a></div>
+            <div class="item" id="wo"><a href="#wo-card">우리카드</a></div>
+            <div class="item" id="nh"><a href="#nh-card">농협카드</a></div>
+            <div class="item" id="sh"><a href="#sh-card">신한카드</a></div>
+            <div class="item" id="hn"><a href="#hn-card">하나카드</a></div>
+            <div class="item" id="ib"><a href="#ib-card">기업카드</a></div>
+            <div class="item" id="ss"><a href="#ss-card">삼성카드</a></div>
+            <div class="item" id="hd"><a href="#hd-card">현대카드</a></div>
+            <div class="item" id="l"><a href="#l-card"> 롯데카드</a></div>
+            <div class="item" id="ct"><a href="#ct-card">씨티카드</a></div>
+        </div>
+    </div>
+    </div>
+
+
+    <div class="cardlist">
+        <div class="cardform">
+            <ul class="kb-card" id="kb-card">
+                <h2> KB국민카드</h2>
+                <li><div class="card-img"><img src="https://api6.card-gorilla.com:8080/storage/card/485/card_img/3814/KB%EA%B5%AD%EB%AF%BC_%ED%83%84%ED%83%84%EB%8C%80%EB%A1%9C_%EC%98%AC%EC%87%BC%ED%95%91_%ED%8B%B0%ED%83%80%EB%8A%84.png" alt=""> </div>
+                    <h4>탄탄대로 올쇼핑카드</h4>
+                    <h6>국내전용 30,000원 / 해외겸용 30,000원</h6>
+                    <a href="/board/list" id="KB1">자세히보기</a></li>
+<!--                    <a href="read.html" th:href="@{|/pds/read?itemId=${item.itemId}|}">자세히보기</a>-->
+                <li><div class="card-img"><img src="https://api6.card-gorilla.com:8080/storage/card/129/card_img/281/km_cheongchuntocktock_card.png" alt=""></div>
+                    <h4>청춘대로 톡톡카드</h4>
+                    <h6>국내전용 10,000원  해외겸용 12,000원</h6>
+                    <a href="" id="KB2">자세히보기</a></li>
+                <li><div class="card-img"><img src="https://api6.card-gorilla.com:8080/storage/card/121/card_img/322/kb_dadam_card.png" alt=""> </div>
+                    <h4>다담카드</h4>
+                    <h6>연회비해외겸용 20,000원</h6>
+                    <a href="" id="KB3">자세히보기</a></li>
+                <li><div class="card-img"><img src="https://api6.card-gorilla.com:8080/storage/card/634/card_img/8512/kb_Easy_all_Titanium.png" alt=""> </div>
+                    <h4>Easy all 티타늄카드</h4>
+                    <h6>국내전용 30,000원  해외겸용 30,000원</h6>
+                    <a href="" id="KB4">자세히보기</a></li>
+                <li><div class="card-img"><img src="https://api6.card-gorilla.com:8080/storage/card/137/card_img/404/kb_tantan_miz%26mr_card.png" alt=""> </div>
+                    <h4>탄탄대로 Miz_Mr카드</h4>
+                    <h6>국내전용 15,000원  해외겸용 15,000원</h6>
+                    <a href="#" id="KB5">자세히보기</a></li>
+            </ul>
+            <ul class="wo-card" id="wo-card">
+                <h2>우리카드</h2>
+                <li><div class="card-img"><img src="https://api6.card-gorilla.com:8080/storage/card/87/card_img/305/wr_dAcjs_card-%282%29.png" alt=""></div>
+                    <h4>DA_카드의정석</h4>
+                    <h6>국내전용 5,000원 / 해외겸용 10,000원</h6>
+                    <a href="" id="WO1">자세히보기</a></li>
+                <li><div class="card-img"><img src="https://api6.card-gorilla.com:8080/storage/card/84/card_img/323/wr_cjspoint_card.png" alt=""></div>
+                    <h4>카드의정석 POINT</h4>
+                    <h6>국내전용 10,000원 / 해외겸용 12,000원</h6>
+                    <a href="" id="WO2">자세히보기</a></li>
+                <li><div class="card-img"><img src="https://api6.card-gorilla.com:8080/storage/card/583/card_img/14500/%EC%95%8C%EB%9C%B0%EA%B5%90%ED%86%B5%EC%B9%B4%EB%93%9C.png" alt=""></div>
+                    <h4>알뜰교통카드</h4>
+                    <h6>국내전용 13,000원 / 해외겸용 15,000원</h6>
+                    <a href="" id="WO3">자세히보기</a></li>
+                <li><div class="card-img"><img src="https://api6.card-gorilla.com:8080/storage/card/661/card_img/9921/%EC%B9%B4%EB%93%9C%EC%9D%98%EC%A0%95%EC%84%9D-%EC%96%B8%ED%83%9D%ED%8A%B8-AIR.png" alt=""></div>
+                    <h4>카드의정석 UNTACT AIR</h4>
+                    <h6>국내전용 15,000원 / 해외겸용 15,000원</h6>
+                    <a href="" id="WO4">자세히보기</a></li>
+                <li><div class="card-img"><img src="https://api6.card-gorilla.com:8080/storage/card/88/card_img/304/wr_d4cjs_card-%282%29.png" alt=""></div>
+                    <h4>D4_카드의정석</h4>
+                    <h6>국내전용 9,000원 / 해외겸용 10,000원</h6>
+                    <a href="" id="WO5">자세히보기</a></li>
+            </ul>
+            <ul class="nh-card" id="nh-card">
+                <h2>NH농협카드</h2>
+                <li><div class="card-img"><img src="https://api6.card-gorilla.com:8080/storage/card/666/card_img/9666/%EC%98%AC%EB%B0%94%EB%A5%B8FLEX%EC%B9%B4%EB%93%9C.png" alt=""></div>
+                    <h4>올바른 FLEX카드</h4>
+                    <h6>국내전용 10,000원 / 해외겸용 12,000원</h6>
+                    <a href="" id="NH1">자세히보기</a></li>
+                <li><div class="card-img"><img src="https://api6.card-gorilla.com:8080/storage/card/181/card_img/2559/nh_all1_pie.png" alt=""></div>
+                    <h4>NH올원 파이카드</h4>
+                    <h6>해외겸용W 10,000원 / 해외겸용 12,000원</h6>
+                    <a href="" id="NH2">자세히보기</a></li>
+                <li><div class="card-img"><img src="https://api6.card-gorilla.com:8080/storage/card/184/card_img/357/nh_nhhaebom_card.png" alt=""></div>
+                    <h4>NH20 해봄카드</h4>
+                    <h6>해외겸용 8,000원</h6>
+                    <a href="" id="NH3">자세히보기</a></li>
+                <li><div class="card-img"><img src="https://api6.card-gorilla.com:8080/storage/card/174/card_img/530/nh_kmhappy_a.png" alt=""></div>
+                    <h4>국민행복카드(비씨)</h4>
+                    <h6>해외겸용 없음</h6>
+                    <a href="" id="NH4">자세히보기</a></li>
+                <li><div class="card-img"><img src="https://api6.card-gorilla.com:8080/storage/card/636/card_img/8549/%EC%98%AC%EB%B0%94%EB%A5%B8-NEW-HAVE%2B.png" alt=""></div>
+                    <h4>올바른 NEW HAVE카드</h4>
+                    <h6>국내전용 23,000원 / 해외겸용 25,000원</h6>
+                    <a href="#" id="NH5">자세히보기</a></li>
+            </ul>
+            <ul class="sh-card" id="sh-card">
+                <h2>신한카드</h2>
+                <li><div class="card-img"><img src="https://api6.card-gorilla.com:8080/storage/card/678/card_img/11798/sh_the_more.png" alt=""></div>
+                    <h4>The More(더모아)</h4>
+                    <h6>국내전용 15,000원 / 해외겸용 18,000원</h6>
+                    <a href="" id="SH1">자세히보기</a></li>
+                <li><div class="card-img"><img src="https://api6.card-gorilla.com:8080/storage/card/13/card_img/185/card_img.png" alt=""></div>
+                    <h4>Mr.Life</h4>
+                    <h6>해외겸용 15,000원</h6>
+                    <a href="" id="SH2">자세히보기</a></li>
+                <li><div class="card-img"><img src="https://api6.card-gorilla.com:8080/storage/card/32/card_img/177/card_img.png" alt=""></div>
+                    <h4>Deep Dream</h4>
+                    <h6>해외겸용 8,000원</h6>
+                    <a href="" id="SH3">자세히보기</a></li>
+                <li><div class="card-img"><img src="https://api6.card-gorilla.com:8080/storage/card/39/card_img/194/card_img.png" alt=""></div>
+                    <h4>Deep Oil</h4>
+                    <h6>해외겸용 10,000원</h6>
+                    <a href="" id="SH4">자세히보기</a></li>
+                <li><div class="card-img"><img src="https://api6.card-gorilla.com:8080/storage/card/40/card_img/233/sh_Deep-Dream-Platinum%2B_card.png" alt=""></div>
+                    <h4>Deep Dream Platinum+</h4>
+                    <h6>해외겸용 30,000원</h6>
+                    <a href="" id="SH5">자세히보기</a></li>
+            </ul>
+            <ul class="hn-card" id="hn-card">
+                <h2>하나카드</h2>
+                <li><div class="card-img"><img src="https://api6.card-gorilla.com:8080/storage/card/252/card_img/14345/hn_anyplus_card.png" alt=""></div>
+                    <h4>Any PLUS 카드</h4>
+                    <h6>해외겸용 15,000원</h6>
+                    <a href="" id="HN1">자세히보기</a> </li>
+                <li><div class="card-img"><img src="https://api6.card-gorilla.com:8080/storage/card/240/card_img/5774/1Q-Living%2B.png" alt=""></div>
+                    <h4>1Q Living+</h4>
+                    <h6>해외겸용 10,000원</h6>
+                    <a href="" id="HN2">자세히보기</a> </li>
+                <li><div class="card-img"><img src="https://api6.card-gorilla.com:8080/storage/card/709/card_img/14607/MULTI_Any.png" alt=""></div>
+                    <h4>MULTI Any(멀티 애니) 카드</h4>
+                    <h6>국내전용 12,000원 / 해외겸용 12,000원</h6>
+                    <a href="" id="HN3">자세히보기</a></li>
+                <li><div class="card-img"><img src="https://api6.card-gorilla.com:8080/storage/card/238/card_img/5776/1Q-Daily%2B.png" alt=""></div>
+                    <h4>1Q Daily+</h4>
+                    <h6>해외겸용 10,000원</h6>
+                    <a href="" id="HN4">자세히보기</a> </li>
+                <li><div class="card-img"><img src="https://api6.card-gorilla.com:8080/storage/card/228/card_img/4730/hn_smartany.png" alt=""></div>
+                    <h4>Smart Any 카드(스마트애니)</h4>
+                    <h6>국내전용 5,000원 / 해외겸용 5,000원</h6>
+                    <a href="" id="HN5">자세히보기</a></li>
+            </ul>
+            <ul class="ib-card" id="ib-card">
+                <h2>기업카드</h2>
+                <li><div class="card-img"><img src="https://api6.card-gorilla.com:8080/storage/card/266/card_img/536/ibk_ilsangkibbeum_card.png" alt=""></div>
+                    <h4>일상의 기쁨카드</h4>
+                    <h6>해외겸용 10,000원</h6>
+                    <a href="" id="IB1">자세히보기</a></li>
+                <li><div class="card-img"><img src="https://api6.card-gorilla.com:8080/storage/card/723/card_img/14034/%EB%AC%B4%EB%AF%BC%EC%B9%B4%EB%93%9C%28%EC%8B%A0%EC%9A%A9%29.png" alt=""></div>
+                    <h4>IBK무민카드</h4>
+                    <h6>국내전용 10,000원 / 해외겸용 10,000원</h6>
+                    <a href="" id="IB2">자세히보기</a></li>
+                <li><div class="card-img"><img src="https://api6.card-gorilla.com:8080/storage/card/260/card_img/722/ibk_kukminhappy_card.png" alt=""></div>
+                    <h4>국민행복카드</h4>
+                    <h6>국내전용 0원</h6>
+                    <a href="" id="IB3">자세히보기</a></li>
+                <li><div class="card-img"><img src="https://api6.card-gorilla.com:8080/storage/card/274/card_img/520/ibk_shopping%26joy_card.png" alt=""></div>
+                    <h4>쇼핑앤조이 카드</h4>
+                    <h6>해외겸용 10,000원</h6>
+                    <a href="" id="IB4">자세히보기</a></li>
+                <li><div class="card-img"><img src="https://api6.card-gorilla.com:8080/storage/card/263/card_img/521/ibk_ktwizcredit_card.png" alt=""></div>
+                    <h4>참! 좋은 kt wiz 카드</h4>
+                    <h6>해외겸용 2,000원</h6>
+                    <a href="" id="IB5">자세히보기</a></li>
+            </ul>
+            <ul class="ss-card" id="ss-card">
+                <h2>삼성카드</h2>
+                <li><div class="card-img"><img src="https://api6.card-gorilla.com:8080/storage/card/51/card_img/208/card_img.png" alt=""></div>
+                    <h4>삼성카드 taptap O</h4>
+                    <h6>국내전용 10,000원 / 해외겸용 10,000원</h6>
+                    <a href="" id="SS1">자세히보기</a></li>
+                <li><div class="card-img"><img src="https://api6.card-gorilla.com:8080/storage/card/554/card_img/6026/6V4.png" alt=""></div>
+                    <h4>삼성카드 6 V4</h4>
+                    <h6>국내전용 39,000원 / 해외겸용 39,000원</h6>
+                    <a href="" id="SS2">자세히보기</a></li>
+                <li><div class="card-img"><img src="https://api6.card-gorilla.com:8080/storage/card/592/card_img/7334/%EC%B9%B4%EC%B9%B4%EC%98%A4%EB%B1%85%ED%81%AC_%EC%82%BC%EC%84%B1.png" alt=""></div>
+                    <h4>카카오뱅크 삼성카드</h4>
+                    <h6>국내전용 7,000원 / 해외겸용 7,000원</h6>
+                    <a href="" id="SS3">자세히보기</a></li>
+                <li><div class="card-img"><img src="https://api6.card-gorilla.com:8080/storage/card/764/card_img/15407/%EC%B9%B4%EC%B9%B4%EC%98%A4%ED%8E%98%EC%9D%B4-%EC%82%BC%EC%84%B1%EC%B9%B4%EB%93%9C.png" alt=""></div>
+                    <h4>카카오페이 신용카드</h4>
+                    <h6>국내전용 10,000원 / 해외겸용 10,000원</h6>
+                    <a href="" id="SS4">자세히보기</a></li>
+                <li><div class="card-img"><img src="https://api6.card-gorilla.com:8080/storage/card/552/card_img/6024/2V4.png" alt=""></div>
+                    <h4>삼성카드 2 V4</h4>
+                    <h6>국내전용 20,000원 / 해외겸용 20,000원</h6>
+                    <a href="" id="SS5">자세히보기</a></li>
+            </ul>
+            <ul class="hd-card" id="hd-card">
+                <h2>현대카드</h2>
+                <li><div class="card-img"><img src="https://api6.card-gorilla.com:8080/storage/card/608/card_img/13690/hd_zero_ed2.png" alt=""> </div>
+                    <h4>현대카드ZERO Edition2(할인형)</h4>
+                    <h6>국내전용 10,000원 / 해외겸용 10,000원</h6>
+                    <a href="" id="HD1">자세히보기</a></li>
+                <li><div class="card-img"><img src="https://api6.card-gorilla.com:8080/storage/card/730/card_img/14572/%ED%98%84%EB%8C%80%EC%B9%B4%EB%93%9CZ-family_%ED%94%8C%EB%A0%88%EC%9D%B4%ED%8A%B8.png"  alt=""></div>
+                    <h4>현대카드Z family</h4>
+                    <h6>국내전용 10,000원 / 해외겸용 10,000원</h6>
+                    <a href="" id="HD2">자세히보기</a> </li>
+                <li><div class="card-img"><img src="https://api6.card-gorilla.com:8080/storage/card/700/card_img/12922/%ED%98%84%EB%8C%80%EC%B9%B4%EB%93%9C-M-BOOST.png" alt=""></div>
+                    <h4>현대카드 M BOOST</h4>
+                    <h6>국내전용 30,000원 / 해외겸용 30,000원</h6>
+                    <a href="" id="HD3">자세히보기</a> </li>
+                <li><div class="card-img"><img src="https://api6.card-gorilla.com:8080/storage/card/610/card_img/13689/hd_zero_ed2.png" alt=""></div>
+                    <h4>현대카드ZERO Edition2(포인트형)</h4>
+                    <h6>국내전용 10,000원 / 해외겸용 10,000원</h6>
+                    <a href="" id="HD4">자세히보기</a> </li>
+                <li><div class="card-img"><img src="https://api6.card-gorilla.com:8080/storage/card/763/card_img/15273/Glossy.png" alt=""></div>
+                    <h4>the Pink</h4>
+                    <h6>국내전용 150,000원 / 해외겸용 150,000원</h6>
+                    <a href="" id="HD5">자세히보기</a> </li>
+            </ul>
+            <ul class="l-card" id="l-card">
+                <h2>롯데카드</h2>
+                <li><div class="card-img"><img src="https://api6.card-gorilla.com:8080/storage/card/210/card_img/512/lt_likitall_card.png" alt=""></div>
+                    <h4>LIKIT ALL 카드</h4>
+                    <h6>국내전용 10,000원 / 해외겸용 10,000원</h6>
+                    <a href="" id="L1">자세히보기</a> </li>
+                <li><div class="card-img"><img src="https://api6.card-gorilla.com:8080/storage/card/660/card_img/18122/LIKIT_FUN%ED%94%8C%EB%9F%AC%EC%8A%A4.png"  alt=""></div>
+                    <h4>LIKIT FUN+ 카드</h4>
+                    <h6>국내전용 15,000원 / 해외겸용 15,000원</h6>
+                    <a href="" id="L2">자세히보기</a> </li>
+                <li><div class="card-img"><img src="https://api6.card-gorilla.com:8080/storage/card/208/card_img/7706/lt_likitfun_card.png" alt=""></div>
+                    <h4>LIKIT FUN 카드</h4>
+                    <h6>국내전용 10,000원 / 해외겸용 10,000원</h6>
+                    <a href="" id="L3">자세히보기</a> </li>
+                <li><div class="card-img"><img src="https://api6.card-gorilla.com:8080/storage/card/209/card_img/510/lt_likiton_card.png" alt=""></div>
+                    <h4>LIKIT ON 카드</h4>
+                    <h6>국내전용 10,000원 / 해외겸용 10,000원</h6>
+                    <a href="" id="L4">자세히보기</a> </li>
+                <li><div class="card-img"><img src="https://api6.card-gorilla.com:8080/storage/card/212/card_img/444/lt_pointgrande_card.png" alt=""></div>
+                    <h4>포인트플러스 GRANDE카드</h4>
+                    <h6>국내전용 5,000원 / 해외겸용 10,000원</h6>
+                    <a href="" id="L5">자세히보기</a></li>
+            </ul>
+            <ul class="ct-card" id="ct-card">
+                <h2>씨티카드</h2>
+                <li><div class="card-img"><img src="https://api6.card-gorilla.com:8080/storage/card/101/card_img/6811/%EC%94%A8%ED%8B%B0-NEW-%ED%81%B4%EB%A6%AC%EC%96%B4-%EC%B9%B4%EB%93%9C-%EB%A7%88%EC%8A%A4%ED%84%B0.png"  alt=""></div>
+                    <h4>NEW 씨티 클리어</h4>
+                    <h6>국내전용 4,000원 / 해외겸용 5,000원</h6>
+                    <a href="" id="CT1">자세히보기</a> </li>
+                <li><div class="card-img"><img src="https://api6.card-gorilla.com:8080/storage/card/593/card_img/7335/%EC%B9%B4%EC%B9%B4%EC%98%A4%EB%B1%85%ED%81%AC_%EC%94%A8%ED%8B%B0.png"  alt=""></div>
+                    <h4>카카오뱅크 씨티카드</h4>
+                    <h6>국내전용 6,000원 / 해외겸용 7,000원</h6>
+                    <a href="" id="CT2">자세히보기</a> </li>
+                <li><div class="card-img"><img src="https://api6.card-gorilla.com:8080/storage/card/604/card_img/7525/%EC%94%A8%ED%8B%B0%ED%94%84%EB%A6%AC%EB%AF%B8%EC%96%B4%EB%A7%88%EC%9D%BC.png"  alt=""></div>
+                    <h4>씨티 프리미어마일 대한항공</h4>
+                    <h6>해외겸용 120,000원</h6>
+                    <a href="" id="CT3">자세히보기</a> </li>
+                <li><div class="card-img"><img src="https://api6.card-gorilla.com:8080/storage/card/96/card_img/6812/%EC%94%A8%ED%8B%B0-%EB%A6%AC%EC%9B%8C%EB%93%9C-%EB%A7%88%EC%8A%A4%ED%84%B0.png" alt=""></div>
+                    <h4>씨티 리워드</h4>
+                    <h6>국내전용 8,000원 / 해외겸용 10,000원</h6>
+                    <a href="" id="CT4">자세히보기</a> </li>
+
+                <li><div class="card-img"><img src="https://api6.card-gorilla.com:8080/storage/card/503/card_img/4816/%EB%A9%94%EA%B0%80%EB%A7%88%EC%9D%BC_%EC%8A%A4%EC%B9%B4%EC%9D%B4%ED%8C%A8%EC%8A%A4.png" alt=""></div>
+                    <h4>씨티 메가마일 스카이패스</h4>
+                    <h6>국내전용 8,000원 / 해외겸용 12,000원</h6>
+                    <a href="" id="CT5">자세히보기</a> </li>
+            </ul>
+
+        </div>
+    </div>
+    <a id="backtotop">top</a>
+
+    <script defer>
+        document.addEventListener('scroll',e=>{
+            if(window.scrollY > 500){	//스크롤 위치 500 높을시
+                //상단 이동 버튼 생성
+                document.querySelector('#backtotop').classList.add('visible');
+            }
+            else {	//스크롤 위치 500 아래일시
+                document.querySelector('#backtotop').classList.remove('visible');
+            }
+        })
+        document.querySelector('#backtotop').addEventListener('click',e=>{
+            document.querySelector('body').scrollIntoView({behavior:'smooth'});
+        });
+        //
+        // function div_show() {
+        //     document.querySelector(".mq-block").style.display = "block";
+        // }
+        // function div_hide() {
+        //     document.querySelector(".show").style.display = "none";
+        // }
+        // document.querySelector('.drop-card').addEventListener('click',e=>{
+        //     document.querySelector('.drop-card').classList.add('drop-none');
+        //     document.querySelector('.close-card').classList.add('close-show');
+        // });
+
+
+        const dropdownToggle = document.querySelector(".drop-card");
+        const dropdownItems = document.querySelector(".mq-block");
+        const dropdownBtn = document.querySelectorAll(".a");
+
+        dropdownToggle.addEventListener("click", (e) => {
+            if (dropdownItems.classList.contains("show")) {
+                dropdownItems.classList.remove("show");
+                return;
+            }
+            dropdownItems.classList.add("show");
+            dropdownBtn.forEach((item) => {
+                item.addEventListener("click", (e) => {
+                    // const selected = e.currentTarget.innerText;
+                    // dropdownToggle.innerText = selected;
+                    // dropdownToggle.classList.add("selected");
+                    dropdownItems.classList.remove("show");
+                });
+            });
+        });
+
+        dropdownToggle.addEventListener("blur", () => {
+            dropdownItems.classList.remove("show");
+        });
+
+
+
+
+    </script>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,12 @@
+@media screen and (max-width: 480px) {
+    .register-btn ,.read-btn{
+        width: 340px;
+    }
+    .board-register input {
+        width: 350px;
+    }
+    textarea {
+        width: 350px;
+        height: 300px;
+    }
+}

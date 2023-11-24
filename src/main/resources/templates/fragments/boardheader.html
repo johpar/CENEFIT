@@ -1,0 +1,27 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+<div th:fragment="boardheader">
+<header>
+    <nav>
+        <div class="xxx-logo">
+            <a href="../home.html" th:href="@{/}" th:text="#{header.home}"></a>
+
+        </div>
+        <form id="search" action="">
+            <input type="text" name="searchInput"/>
+            <button class="iconBtn" type="submit" name="searchClick">
+                <i class="fas fa-search"></i></button>
+        </form>
+        <div class="xxx-menu">
+            <ul>
+                <li class="lojo-none"><a href="/user/register" th:text="#{header.joinMember}"><span>join</span></a></li>
+                <li class="lojo-none"><a href="/auth/login" th:text="#{header.login}"><span>login</span></a></li>
+                <li><i style="font-size: 1rem; color: #111; margin-top: 5px;" id="nav-mqBtn" class="fas fa-bars"></i></li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+</body>
+</html>

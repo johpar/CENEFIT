@@ -1,0 +1,98 @@
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<body>
+
+<div th:fragment="header">
+	<header>
+		<div id="headerhover">
+
+			<ul class="logo-left">
+				<li><a href="" th:text="#{header.country}">대한민국</a></li>
+				<li><a href="?lang=ko" th:text="#{header.languageKo}">한국어</a></li>
+				<li><a href="?lang=en" th:text="#{header.languageEn}">영어</a></li>
+				<li><a href="" th:text="#{header.customerservice}">고객서비스</a></li>
+			</ul>
+
+			<div class="center-logo">
+				<a href="../home.html" th:href="@{/}" th:text="#{header.home}"></a>
+			</div>
+
+			<ul class="logo-right" >
+				<table>
+					<tr sec:authorize="!isAuthenticated()">
+						<td width="40"><a href="/user/register" th:text="#{header.joinMember}" >회원가입</a></td>
+						<td width="50"><a href="/auth/login" th:text="#{header.login}">로그인</a></td>
+						<td><i style="font-size: 1rem; color: #fff" id="nav-mqBtn" class="fas fa-bars"></i></td>
+					</tr>
+					<tr sec:authorize="isAuthenticated()">
+						<td width="140">
+							<form action="loginForm.html" th:action="@{/auth/logout}" method="post" style="color:#FFF; float: right; display: flex;
+    align-items: flex-start;">
+								<span sec:authentication="principal.username" >user</span>&nbsp;님 <button style="color:#FFF; margin-left: 30px; margin-right: 15px;">logout</button>
+							</form>
+						</td>
+					</tr>
+				</table>
+			</ul>
+
+		</div>
+
+		<nav class="navbar">
+			<ul class="clearfix mainmenu">
+				<!--			<li><a href="#">what's new </a>-->
+				<!--				<ul class="submenu">-->
+				<!--					<li>2nd menu</li>-->
+				<!--					<li>2nd menu</li>-->
+				<!--				</ul>-->
+				<!--			</li>-->
+				<li><a href="/pds/list" th:text="#{header.chart}"></a>
+					<!--				<ul class="submenu">-->
+					<!--					<li>2nd menu</li>-->
+					<!--					<li>2nd menu</li>-->
+					<!--					<li>2nd menu</li>-->
+					<!--				</ul>-->
+				</li>
+				<li><a href="/pds/card" th:text="#{header.card}">Card</a>
+					<!--				<ul class="submenu">-->
+					<!--					<li>2nd menu</li>-->
+					<!--					<li>2nd menu</li>-->
+					<!--				</ul>-->
+				</li>
+				<li><a href="/board/list" th:text="#{header.board}">게시판</a>
+					<!--				<ul class="submenu">-->
+					<!--					<li><a href="" th:text="#{submenu.community}">자유게시판</a></li>-->
+					<!--					<li><a href="" th:text="#{submenu.qna}">질문하기</a></li>-->
+					<!--					<li><a href="" th:text="#{submenu.faq}">자주묻는질문</a></li>-->
+					<!--				</ul>-->
+				</li>
+				<li><a href="/item/faq" th:text="#{header.customercenter}">고객센터</a>
+					<ul class="submenu">
+						<li><a href="" th:text="#{submenu.qna}">질문하기</a></li>
+						<li><a href="register.html" th:href="@{/pds/register}"th:text="#{submenu.faq}">자주묻는질문</a></li>
+					</ul>
+				</li>
+
+			</ul>
+
+		</nav>
+
+
+
+	</header>
+	<script>
+		const toggleBtn = document.querySelector("#nav-mqBtn");
+		const menu = document.querySelector(".clearfix");
+
+		toggleBtn.addEventListener("click", () => {
+			menu.classList.toggle("active");
+		});
+	</script>
+
+
+</div>
+
+
+
+</body>
+</html>

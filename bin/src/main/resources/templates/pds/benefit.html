@@ -1,0 +1,192 @@
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layouts/black_template">
+
+<head>
+    <title>Pds</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../../static/css/style.css" th:href="@{/css/style.css}"/>
+    <link rel="stylesheet" href="../../static/css/benefit.css" th:href="@{/css/benefit.css}"/>
+
+    <style>
+        .mq-scroll-i,.mq-scroll-ca, .mq-benefit{
+            display: none;
+        }
+
+        @media screen and (max-width:768px){
+            .search-cardname,.search-categoryname {
+                margin: 18px 10px;
+                border-bottom:none;
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+            }
+            .category-area {
+                width: 195px;
+            }
+            .search-area,.category-area {
+                margin-left: 22px;
+                display: flex;
+                flex-direction: column;
+                height: 70px;
+
+            }
+            .search-area {
+                margin-left: 180px;
+            }
+            .mq-benefit {display: flex;}
+            .mq-scroll-i,.mq-scroll-ca {display: block;}
+            .list-height {
+                height: 195px;
+            }
+            .list-area {
+                width: 650px;
+            }
+            .mq-benefit {
+                height: 0;
+                position: absolute;
+                right: 210px;
+                top: 100px;
+            }
+            section, .mq-benefit {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+                margin-left: 20px;
+            }
+        }
+        @media screen and (max-width:480px) {
+            .mq-benefit {
+                right: 115px;
+            }
+            .list-area {
+                border: none;
+                width: 400px;
+            }
+            .search-area {
+                margin-left: 115px;
+                width: 200px;
+            }
+            .category-area {
+                width: 150px;
+            }
+        }
+
+
+    </style>
+
+</head>
+<body>
+<div layout:fragment="content">
+
+    <section class="mq-benefit">
+        <div class="category-area">
+            <div class="search-categoryname">
+                    <h1>#category:</h1>
+                    <button class="mq-scroll-ca"><i class="far fa-caret-square-down" style="color:#fff; font-size: 1rem"></i></button>
+                </div>
+                <div class="mq-card-scroll">
+                    <ul class="mq-scroll">
+                        <li><a href=""><h4>shopping</h4></a></li>
+                        <li><a href=""><h4>traffic</h4></a></li>
+                        <li><a href=""><h4>convenience<br>store</h4></a></li>
+                        <li><a href=""><h4>food</h4></a></li>
+                        <li><a href=""><h4>cafe<br>/dessert</h4></a></li>
+                        <li><a href=""><h4>digital</h4></a></li>
+                        <li><a href=""><h4>utility_bill</h4></a></li>
+                        <li><a href=""><h4>education</h4></a></li>
+                        <li><a href=""><h4>culture</h4></a></li>
+                    </ul>
+                </div>
+            <div class="empty"></div>
+            </div>
+        </section>
+<section>
+        <div class="search-area">
+            <div class="search-cardname">
+                <h1>#Choose a card</h1>
+                <button class="mq-scroll-i"><i class="far fa-caret-square-down" style="color:#fff; font-size: 1rem"></i></button>
+            </div>
+
+            <div class="list-scroll">
+                <ul class="scroll">
+                    <li>
+                        <div class="scroll-img">
+                            <img src="https://api6.card-gorilla.com:8080/storage/card/485/card_img/3814/KB%EA%B5%AD%EB%AF%BC_%ED%83%84%ED%83%84%EB%8C%80%EB%A1%9C_%EC%98%AC%EC%87%BC%ED%95%91_%ED%8B%B0%ED%83%80%EB%8A%84.png" alt="">
+                        </div>
+                        <a href=""><h4>탄탄대로 올쇼핑 티타늄카드</h4></a></li>
+                    <li>
+                        <div class="scroll-img">
+                            <img src="https://api6.card-gorilla.com:8080/storage/card/485/card_img/3814/KB%EA%B5%AD%EB%AF%BC_%ED%83%84%ED%83%84%EB%8C%80%EB%A1%9C_%EC%98%AC%EC%87%BC%ED%95%91_%ED%8B%B0%ED%83%80%EB%8A%84.png" alt="">
+                        </div>
+                        <a href=""><h4>탄탄대로 올쇼핑 티타늄카드</h4></a></li>
+                    <li>
+                        <div class="scroll-img">
+                            <img src="https://api6.card-gorilla.com:8080/storage/card/485/card_img/3814/KB%EA%B5%AD%EB%AF%BC_%ED%83%84%ED%83%84%EB%8C%80%EB%A1%9C_%EC%98%AC%EC%87%BC%ED%95%91_%ED%8B%B0%ED%83%80%EB%8A%84.png" alt="">
+                        </div>
+                        <a href=""><h4>탄탄대로 올쇼핑 티타늄카드</h4></a></li>
+                    <li>
+                        <div class="scroll-img">
+                            <img src="https://api6.card-gorilla.com:8080/storage/card/485/card_img/3814/KB%EA%B5%AD%EB%AF%BC_%ED%83%84%ED%83%84%EB%8C%80%EB%A1%9C_%EC%98%AC%EC%87%BC%ED%95%91_%ED%8B%B0%ED%83%80%EB%8A%84.png" alt="">
+                        </div>
+                        <a href=""><h4>탄탄대로 올쇼핑 티타늄카드</h4></a></li>
+                    <li>
+                        <div class="scroll-img">
+                            <img src="https://api6.card-gorilla.com:8080/storage/card/485/card_img/3814/KB%EA%B5%AD%EB%AF%BC_%ED%83%84%ED%83%84%EB%8C%80%EB%A1%9C_%EC%98%AC%EC%87%BC%ED%95%91_%ED%8B%B0%ED%83%80%EB%8A%84.png" alt="">
+                        </div>
+                        <a href=""><h4>탄탄대로 올쇼핑 티타늄카드</h4></a></li>
+                    <li>
+                        <div class="scroll-img">
+                            <img src="https://api6.card-gorilla.com:8080/storage/card/485/card_img/3814/KB%EA%B5%AD%EB%AF%BC_%ED%83%84%ED%83%84%EB%8C%80%EB%A1%9C_%EC%98%AC%EC%87%BC%ED%95%91_%ED%8B%B0%ED%83%80%EB%8A%84.png" alt="">
+                        </div>
+                        <a href=""><h4>탄탄대로 올쇼핑 티타늄카드</h4></a></li>
+                    <li>
+                        <div class="scroll-img">
+                            <img src="https://api6.card-gorilla.com:8080/storage/card/485/card_img/3814/KB%EA%B5%AD%EB%AF%BC_%ED%83%84%ED%83%84%EB%8C%80%EB%A1%9C_%EC%98%AC%EC%87%BC%ED%95%91_%ED%8B%B0%ED%83%80%EB%8A%84.png" alt="">
+                        </div>
+                        <a href=""><h4>탄탄대로 올쇼핑 티타늄카드</h4></a></li>
+                    <li>
+                        <div class="scroll-img">
+                            <img src="https://api6.card-gorilla.com:8080/storage/card/485/card_img/3814/KB%EA%B5%AD%EB%AF%BC_%ED%83%84%ED%83%84%EB%8C%80%EB%A1%9C_%EC%98%AC%EC%87%BC%ED%95%91_%ED%8B%B0%ED%83%80%EB%8A%84.png" alt="">
+                        </div>
+                        <a href=""><h4>탄탄대로 올쇼핑 티타늄카드</h4></a></li>
+                    <li>
+                        <div class="scroll-img">
+                            <img src="https://api6.card-gorilla.com:8080/storage/card/485/card_img/3814/KB%EA%B5%AD%EB%AF%BC_%ED%83%84%ED%83%84%EB%8C%80%EB%A1%9C_%EC%98%AC%EC%87%BC%ED%95%91_%ED%8B%B0%ED%83%80%EB%8A%84.png" alt="">
+                        </div>
+                        <a href=""><h4>탄탄대로 올쇼핑 티타늄카드</h4></a></li>
+                    <li>
+                        <div class="scroll-img">
+                            <img src="https://api6.card-gorilla.com:8080/storage/card/485/card_img/3814/KB%EA%B5%AD%EB%AF%BC_%ED%83%84%ED%83%84%EB%8C%80%EB%A1%9C_%EC%98%AC%EC%87%BC%ED%95%91_%ED%8B%B0%ED%83%80%EB%8A%84.png" alt="">
+                        </div>
+                        <a href=""><h4>탄탄대로 올쇼핑 티타늄카드</h4></a></li>
+                </ul>
+            </div>
+            <div class="empty"></div>
+        </div>
+        <div class="list-area">
+            <div class="info">
+                <div class="list-img">
+                    <img src="https://api6.card-gorilla.com:8080/storage/card/485/card_img/3814/KB%EA%B5%AD%EB%AF%BC_%ED%83%84%ED%83%84%EB%8C%80%EB%A1%9C_%EC%98%AC%EC%87%BC%ED%95%91_%ED%8B%B0%ED%83%80%EB%8A%84.png" alt="">
+                </div>
+                <p>탄탄대로 올쇼핑 티타늄카드</p>
+                <div class="detail">
+                    <h4>benefit</h4><h4>benefit</h4><h4>benefit</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.querySelector('.mq-scroll-i').addEventListener('click',e=>{
+            document.querySelector('.search-area').classList.add('list-height');
+        });
+        document.querySelector('.mq-scroll-ca').addEventListener('click',e=>{
+            document.querySelector('.category-area').classList.add('list-height');
+        });
+    </script>
+</div>
+
+</body>
+</html>

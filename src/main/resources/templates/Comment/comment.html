@@ -1,0 +1,131 @@
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{/layouts/board_template}">
+	
+<head>
+	<title>Comment</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" href="../../static/css/style.css" th:href="@{/css/style.css}"/>
+	
+	<script type="text/javascript">
+	var boardNo = '${board.boardNo}';
+	
+  	//댓글등록버튼
+	$("#btnCommentInsert").on("click",function(){ //댓글 등록 버튼 클릭시
+		console.log("버튼눌림");
+	    var boardNo = $("#boardNo");
+	    var writer = $("#writer");
+	    var content = $("#content");
+	    commentRegister(boardNo, writer, content); //Insert 함수호출(아래)
+	});
+	
+	$(document).ready(function(){
+	    commentList(); //페이지 로딩시 댓글 목록 출력 
+	});
+  	
+	//댓글 목록 
+	function commentList(){
+	    $.ajax({
+	        url : '/comment/comList',
+	        type : 'post',
+	        dataType : "json",
+	        data : {'boardNo':boardNo},
+	        success : function(data){
+	            var a =''; 
+	            $.each(data,function(index, comment){ 
+	                a += '<div class="commentArea" style="border-bottom:1px solid darkgray; margin-bottom: 15px;">';
+	               	a += '<div class="commentInfo'+comment["content"]+'">'+'/작성자: '+comment["writer"];
+	                
+	                /* a += '<div class="commentInfo'+value.comNo+'">'+'댓글번호 : '+value.comNo+' / 작성자 : '+value.writer;
+	                /* a += '<a onclick="commentUpdate('+value.comNo+',\''+value.content+'\');"> 수정 </a>';
+	                a += '<a onclick="commentDelete('+value.comNo+');"> 삭제 </a> </div>'; */
+	                /* a += '<div class="commentContent'+value.comNo+'"> <p> 내용 : '+value.content +'</p>'; */
+	                a += '</div></div>';
+	            });
+	            
+	            $(".commentList").html(a);
+	        }
+	    });
+	}
+	 
+	//댓글 등록
+	function commentRegister(boardNo, writer, content){
+	    $.ajax({
+	        url : '/comment/comWrite',
+	        type : 'post',
+	        dataType : "json",
+	        data : {
+	        	"boardNo":boardNo,
+	        	"writer":writer,
+	        	"content":content
+	        },
+	        success : function(data){
+	        	commentList(); //댓글 작성 후 댓글 목록 reload
+                /* $('[name=content]').val(''); */
+	        }
+	    });
+	}
+	
+	//댓글 수정 - 댓글 내용 출력을 input 폼으로 변경 
+	/* function commentUpdate(comNo, content){
+	    var a ='';
+	    
+	    a += '<div class="input-group">';
+	    a += '<input type="text" class="form-control" name="content_'+comNo+'" value="'+content+'"/>';
+	    a += '<span class="input-group-btn"><button class="btn btn-default" type="button" onclick="commentUpdateProc('+comNo+');">수정</button> </span>';
+	    a += '</div>';
+	    
+	    $('.commentContent'+comNo).html(a);
+	    
+	} */
+	 
+	//댓글 수정
+	/* function commentUpdateProc(comNo){
+	    var updateContent = $('[name=content_'+comNo+']').val();
+	    
+	    $.ajax({
+	        url : '/comment/modify',
+	        type : 'post',
+	        data : {'content' : updateContent, 'comNo' : comNo},
+	        success : function(data){
+	            if(data == 1) commentList(boardNo); //댓글 수정후 목록 출력 
+	        }
+	    });
+	} */ 
+	 
+	//댓글 삭제 
+	/* function commentDelete(comNo){
+	    $.ajax({
+	        url : '/comment/remove/'+comNo,
+	        type : 'post',
+	        success : function(data){
+	            if(data == 1) commentList(boardNoVal); //댓글 삭제후 목록 출력 
+	        }
+	    });
+	}  */
+    </script>
+	
+</head>
+
+<body>
+	<!-- 댓글 -->
+	<div class="container">
+        <label for="content">comment</label>
+        <form name="commentRegisterForm">
+               <input type="hidden" id="boardNo" th:field="${board.boardNo}"/>
+               <input type="text" id="writer" name="writer" placeholder="작성자를 입력해주세요."/>
+               <input type="text" id="content" name="content" placeholder="내용을 입력하세요."/>
+               <div class="read_btn">
+                    <button type="submit" id="btnCommentInsert">등록</button>
+                    <!--  th:onClick="commentRegister([[${boardNo}]],[[${writer}]],[[${content}]])" -->
+               </div>
+        </form>
+    </div>
+    <!-- 댓글목록출력 -->
+    <div class="container">
+        <div class="commentList">
+        </div>
+    </div>
+    
+</body>
+</html>

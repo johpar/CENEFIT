@@ -1,0 +1,38 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    margin: 0 15px;
+    border-bottom: 1px solid #111;
+}
+#search input,
+button {
+    border: none;
+    outline: none;
+    background: none;
+}
+#search input {
+    border-bottom: 1px solid #ffffff;
+    width: 200px;
+    margin-right:20px;
+   color: #ffffff;
+    font-size: 1rem;
+}
+#search i {
+    font-size: 1rem;
+    margin-right:20px;
+    color: #ffffff;
+}
+header {margin-top: 40px;}
+
+.nav-btnb {
+    position: absolute;
+    right: 20px;
+}
+
+

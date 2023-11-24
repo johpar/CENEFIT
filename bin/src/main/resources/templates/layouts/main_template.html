@@ -1,0 +1,60 @@
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+	<title>Main</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=0">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<script src="https://kit.fontawesome.com/5d13eb1686.js" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="../../static/css/header.css" th:href="@{/css/header.css}"/>
+	<link rel="stylesheet" href="../../static/css/mainslide.css" th:href="@{/css/mainslide.css}"/>
+	<link rel="stylesheet" href="../../static/css/footer2.css" th:href="@{/css/footer2.css}"/>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@1&family=Hina+Mincho&display=swap" rel="stylesheet">
+	<script src="/js/jQuery-2.1.4.min.js"></script>
+
+
+</head>
+
+<body>
+
+	<div th:replace="~{fragments/header::header}"></div>
+
+
+<!--	<div th:replace="~{fragments/main::main}"></div>-->
+
+
+	
+<!--	<div th:replace="~{fragments/menu::menu}"></div>-->
+
+	
+	<div align="center" layout:fragment="content">
+		
+	</div>
+	
+	<div th:replace="~{fragments/footer::footer}"></div>
+
+	<script  th:inline="javascript">
+		var header = document.querySelector("header"),
+				mainMenuList = document.querySelectorAll(".mainmenu > li"),
+				subMenu = document.querySelectorAll(".submenu"),
+				headerHeight = header.offsetHeight,
+				subMenuHeight = 0;
+
+		for (var i = 0; i < mainMenuList.length; i++) {
+			mainMenuList[i].addEventListener("mouseover", function () {
+				subMenuHeight = this.querySelector("ul").offsetHeight;
+				header.style.height = headerHeight + subMenuHeight + "px";
+			});
+			mainMenuList[i].addEventListener("mouseout", function () {
+				header.style.height = headerHeight + "px";
+			});
+		}
+	</script>
+
+
+</body>
+</html>

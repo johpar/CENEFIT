@@ -1,0 +1,176 @@
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layouts/black_template">
+
+<head>
+	<title>Pds</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" href="../../static/css/style.css" th:href="@{/css/style.css}"/>
+	<link rel="stylesheet" href="../../static/css/pdslist.css" th:href="@{/css/pdslist.css}"/>
+
+
+	<script src="https://kit.fontawesome.com/5d13eb1686.js" crossorigin="anonymous"></script>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@1&family=Hina+Mincho&display=swap" rel="stylesheet">
+
+	<style>
+		@media screen and (max-width: 768px) {
+			.grid-tool a {
+				display: flex;
+				flex-direction: column;
+				align-items: flex-start;
+			}
+			.benefit-list {
+				display: block;
+			}
+			.benefit-list h4 {
+				margin: 0;
+				position: relative;
+			}
+			#grid-shop {
+				height: 60px;
+				margin: 0;
+			}
+			.show-btn {
+				display: none;
+			}
+		}
+
+	</style>
+</head>
+<body>
+<div layout:fragment="content">
+
+	<div class="cursor"></div>
+	<div class="cursor-first"></div>
+
+	<marquee loop="infinite" direction="left" scrollamount="15">
+		card_benefit_hash tag / #shopping  #traffic  #convenience_store  #food  #cafe_dessert  #digital  #utility_bil  #hospital  #education  #culture
+	</marquee>
+
+	<div class="benefit">
+		<div class="benefit-list">
+				<button class="show-btn">click</button>
+			<section class="grid-tool" id="grid-shop">
+				<a href="/pds/benefit"><h4>shopping</h4></a>
+			</section>
+			<section class="grid-tool">
+				<a href="/pds/benefit"><h4>traffic</h4></a>
+			</section>
+			<section class="grid-tool">
+				<a href="#"><h4>convenience<br>store</h4></a>
+			</section>
+			<section class="grid-tool">
+				<a href="#"><h4>food</h4></a>
+			</section>
+			<section class="grid-tool">
+				<a href="#"><h4>cafe<br>/dessert</h4></a>
+			</section>
+			<section class="grid-tool">
+				<a href="#"><h4>digital</h4></a>
+			</section>
+			<section class="grid-tool">
+				<a href="#"><h4>utility_bill</h4></a>
+			</section>
+			<section class="grid-tool">
+				<a href="#"><h4>hospital</h4></a>
+			</section>
+			<section class="grid-tool">
+				<a href="#"><h4>education</h4></a>
+			</section>
+			<section class="grid-tool">
+				<a href="#"><h4>culture</h4></a>
+			</section>
+<!--			<div class="grid-tool">-->
+<!--				<a href="#"><h4>traffic</h4></a>-->
+<!--			</div>-->
+<!--			<div class="grid-tool">-->
+<!--				<a href="#"><h4>convenience<br>store</h4></a>-->
+<!--			</div>-->
+<!--			<div class="grid-tool">-->
+<!--				<a href="#"><h4>food</h4></a>-->
+<!--			</div>-->
+<!--			<div class="grid-tool">-->
+<!--				<a href="#"><h4>cafe<br>/dessert</h4></a>-->
+<!--			</div>-->
+<!--			<div class="grid-tool">-->
+<!--				<a href="#"><h4>digital</h4></a>-->
+<!--			</div>-->
+<!--			<div class="grid-tool">-->
+<!--				<a href="#"><h4>utility_bill</h4></a>-->
+<!--			</div>-->
+<!--			<div class="grid-tool">-->
+<!--				<a href="#"><h4>hospital</h4></a>-->
+<!--			</div>-->
+<!--			<div class="grid-tool">-->
+<!--				<a href="#"><h4>education</h4></a>-->
+<!--			</div>-->
+
+<!--			<div class="grid-tool">-->
+<!--				<a href="#"><h4>culture</h4></a>-->
+<!--			</div>-->
+		</div>
+	</div>
+
+
+	<script>
+
+
+		document.querySelector('.show-btn').addEventListener('click',e=>{
+			document.querySelector('.grid-tool a').classList.add('grid-show');
+		});
+
+		document.querySelector('.show-btn').addEventListener('click',e=>{
+			document.querySelector('.show-btn').classList.add('show-none');
+		});
+
+		document.querySelector('.show-btn').addEventListener('click',e=>{
+			document.querySelector('.cursor').classList.add('cursor-on');
+		});
+		document.querySelector('.show-btn').addEventListener('click',e=>{
+			document.querySelector('.cursor-first').classList.add('show-none');
+		});
+
+		let mouseCursor = document.querySelector(".cursor");
+		let navLinks = document.querySelectorAll(".grid-tool a");
+		let headerLinks = document.querySelectorAll(".boardmenu a");
+		let firstCursor = document.querySelector(".cursor-first");
+
+		window.addEventListener("scroll", cursor);
+		window.addEventListener("mousemove", cursor);
+
+		function cursor(e) {
+			mouseCursor.style.left = e.pageX + "px";
+			mouseCursor.style.top = e.pageY - scrollY + "px";
+			firstCursor.style.left = e.pageX + "px";
+			firstCursor.style.top = e.pageY - scrollY + "px";
+		}
+
+		navLinks.forEach((link) => {
+			link.addEventListener("mouseover", () => {
+				mouseCursor.classList.add("link-grow");
+				mouseCursor.style.zIndex = "-1";
+			});
+			link.addEventListener("mouseleave", () => {
+				mouseCursor.classList.remove("link-grow");
+				mouseCursor.style.zIndex = "1000";
+			});
+		});
+			headerLinks.forEach((link) => {
+				link.addEventListener("mouseover", () => {
+					mouseCursor.classList.add("link-grow");
+					mouseCursor.style.zIndex = "-1";
+				});
+				headerLinks.addEventListener("mouseleave", () => {
+					mouseCursor.classList.remove("link-grow");
+					mouseCursor.style.zIndex = "1000";
+				});
+			});
+
+	</script>
+
+
+</div>
+</body>
+</html>
